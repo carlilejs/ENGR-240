@@ -76,8 +76,7 @@ fprintf("\nprime_matrix contains %i elements\n", elements);
 % values
 % USAGE: printm(<matrix>, <number of spaces available to each entry>)
 
-fprintf("\n");
-printm(prime_matrix, 5);
+printm(
 
 %% FUNCTION DEFINITIONS
 
