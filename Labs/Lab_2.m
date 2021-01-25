@@ -1,5 +1,8 @@
 clear
 clc
+% Author: Josh Carlile
+% Class: Mr. Hogan's ENGR 240
+% Date: Jan 21, 2021
 
 %% QUESTION 1
 % Create a vector x with values ranging from 1 to 100 in steps of 5
@@ -20,11 +23,15 @@ w = sin(x);
 % Use dot syntax to apply operations to each value in matrix
 y = x.^2 + 2.*x - 2;
 
-%% QUESTION 4 and 5
+%% QUESTION 4
 % Create a vector r that has 20 random values ranging from 10 to 100
-% Use a for loop & if statement to print even values of r
 
 r = randi([10, 100], [1, 20]);
+
+%% QUESTION 5
+% Use a for loop & if statement to print even values of r
+
+fprintf("\nVector r: ");
 for i = 1:length(r)
     if mod(i, 2) == 0
         fprintf("%.2d, ", r(i));
@@ -43,22 +50,20 @@ while length(p) < 4*5
     p = primes(i);
 end
 
-% Use custom function to turn p into a 4x5 matrix
+% Use custom function (defined below) to turn p into a 4x5 matrix
 prime_matrix = matricize(p, 4, 5);
-printm(prime_matrix, 5); % Print each value of the matrix
 
 %% QUESTION 7
 % Use the matrix you created in question 5 and modify the value in the second row and the third column.  Multiply it by 5.
 
-% fprintf("before: %d\n", prime_matrix(2,3));
-prime_matrix(2, 3) = prime_matrix(2, 3) * 5;
-% fprintf("after: %d\n", prime_matrix(2,3));
+prime_matrix(2, 3) = prime_matrix(2, 3) * 5; % Is this memory efficient?
+test = prime_matrix( mod(prime_matrix, 2) == 1 );
 
 %% QUESTION 8
 % Add a row to the matrix you just modified
 
 [m, n] = size(prime_matrix); % Get rows and columns of the prime_matrix
-prime_matrix = [prime_matrix; zeros([1,n])]; % Add row of n zeros to the end of prime_matrix
+prime_matrix = [prime_matrix; randi([1,10], [1,n])]; % Add row of n random numbers between 1 and 10 to the end of prime_matrix
 fprintf("\n\n");
 printm(prime_matrix, 5);
 
@@ -67,7 +72,7 @@ printm(prime_matrix, 5);
 % prime_matrix
 
 elements = numel(prime_matrix);
-fprintf("\nprime_matrix contains %i elements\n", elements); 
+fprintf("\nprime_matrix contains %i elements\n", elements);
 
 %% QUESTION 10
 % Use nested for loops to display the values in the matrix
@@ -81,8 +86,10 @@ printm(prime_matrix, 5);
 
 %% FUNCTION DEFINITIONS
 
-% returns an n x m matrix from a vector with m*n values
+
 function mat = matricize(vec, m, n)
+% matricize takes a vector of length m*n and returns an m x n matrix
+
     mat = zeros(m, n); % Create a 4x5 matrix of zeros (pre-allocate memory)
     if length(vec) ~= m*n; return; end % End function if mxn matrix cannot be created
     
@@ -94,8 +101,11 @@ function mat = matricize(vec, m, n)
     end
 end
 
-% Function to print matrix mat, with n spaces for each entry
+
 function printm(mat, n)
+% printm prints each value of mxn matrix, mat, organized into m rows and n
+% columns
+
     [rows, columns] = size(mat);
     for i = 1:rows
         for j = 1:columns
