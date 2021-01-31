@@ -7,10 +7,6 @@ clc
 % Date: 1/31/2021
 %
 
-function Lab_3 ()
-    fprintf("This ran automatically");
-end
-
 %% QUESTION 1
 
 length = 15;
@@ -35,7 +31,7 @@ fprintf("The weight of hydrogen peroxide is %.2f amu\n", amu(array));
 % function that will prompt the user for the weight in kg, and wing area in
 % m^2. Return wing loading in kg / m^2
 
-% See wingLoading ()
+% See wingLoading ()d
 
 %% QUESTION 5
 
