@@ -8,14 +8,17 @@ clc
 %
 
 %% QUESTION 1
+% Write a function and prompt the user for the length and width of a
+% rectangle, and return its area with two decimal places. Put comments in
+% the function.
 
-length = 15;
-width = 7;
-rectArea = area(length, width);
-
-fprintf("A rectangle of length %.2f and width %.2f has an area of %.2f\n\n", length, width, rectArea);
+area();
 
 %% QUESTION 2
+% Write a function that will take in parameters for the number of atoms of
+% a particular element and its atomic weight and return the atomic weight
+% of the compound.
+
 array = ["Oxygen"   15.9994     2;
          "Hydrogen" 1.0079      2];
      
@@ -58,10 +61,26 @@ resultant = convertTemp();
 
 %% FUNCTION DEFINITIONS
 
-function a = area (length, width)
+function area ()
 % Returns the area, a, of a rectangle of length and width.
 
-    a = length * width;
+    length = input("Enter the length of the rectangle: ", 's');
+    try
+        length = double(length);
+    catch
+        warning("Length not a number. Assigning length = 0.");
+        length = 0;
+    end
+    
+    width = input("Enter the width of the rectangle: ", 's');
+    try
+        width = double(width);
+    catch
+        warning("Length not a number. Assigning width = 0.");
+        width = 0;
+    end
+    
+    fprintf("Area of rectangle with width: %.1f and length: %.1f has area %.2f", length, width, length * width);
 end
 
 
@@ -109,16 +128,16 @@ function resultTemp = convertTemp ()
        tempC = 0;
     end
     
-    conversion = input("Convert to Kelvin or Fahrenheit? K/F [F]: ");
+    conversion = input("Convert to Kelvin or Fahrenheit? K/F [F]: ", 's');
     if isstring(conversion) || ischar(conversion)
         
     end
     
     switch conversion
-        case "F"
+        case 'F'
             resultTemp = (9/5) * tempC + 32;
             fprintf("%.1f C is %.1f F\n", tempC, resultTemp);
-        case "K"
+        case 'K'
             resultTemp = tempC + 273.15;
             fprintf("%.1f C is %.1f K\n", tempC, resultTemp);
         otherwise
