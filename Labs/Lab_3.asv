@@ -110,10 +110,6 @@ function resultTemp = convertTemp ()
     end
     
     conversion = input("Convert to Kelvin or Fahrenheit? K/F [F]: ");
-    if isstring(conversion) || ischar(conversion)
-        
-    end
-    
     switch conversion
         case "F"
             resultTemp = (9/5) * tempC + 32;
@@ -124,6 +120,6 @@ function resultTemp = convertTemp ()
         otherwise
             resultTemp = 0;
             fprintf("Error. Please enter K for Kelvin, or F for Fahrenheit.");
-    end
+            
 end
 
