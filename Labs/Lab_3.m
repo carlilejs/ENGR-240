@@ -63,33 +63,35 @@ resultant = convertTemp();
 
 function area ()
 % Returns the area, a, of a rectangle of length and width.
-
-    length = input("Enter the length of the rectangle: ", 's');
-    try
-        length = double(length);
-    catch
-        warning("Length not a number. Assigning length = 0.");
+    
+    length = input("Enter the length of the rectangle: ");
+    if (~isa(length, 'numeric'))
+        warning("Length not a number. Setting length = 0.");
         length = 0;
     end
     
-    width = input("Enter the width of the rectangle: ", 's');
-    try
-        width = double(width);
-    catch
-        warning("Length not a number. Assigning width = 0.");
+    width = input("Enter the width of the rectangle: ");
+    if (~isa(width, 'numeric'))
+        warning("Width not a number. Setting width = 0.");
         width = 0;
     end
     
-    fprintf("Area of rectangle with width: %.1f and length: %.1f has area %.2f", length, width, length * width);
+    fprintf("Area of rectangle with width: %.1f and length: %.1f has area %.2f\n\n", length, width, length * width);
 end
 
 
 function weight = amu (atom_info)
+% Receive a matrix, atom_info = ['Element Name', Element Weight (amu),
+% Quantity], as a parameter and return the weight of the compound for that
+% element.
+
     weight = 0;
     
     for i = 1:size(atom_info)
         weight = weight + ( double(atom_info(i,2)) * double(atom_info(i,3)) );
     end
+    
+    if ( ~isa(atom_info(1), 'string' ) || ~isa
 end
 
 function volume = volHollowSphere (r0, r1)
