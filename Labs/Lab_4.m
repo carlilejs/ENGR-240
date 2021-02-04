@@ -13,10 +13,17 @@ clc
 
 X = linspace (1, 2*pi);
 Y = 1 - sin (X).^2;
-plot(X, Y, 'g+');
+plot (X, Y, 'g+');
+
+hold on
 
 %% QUESTION 2
+% Create a vector x with values ranging from 1 to pi. Calculate the vector
+% y with the values sin (x) and plot them
 
+x = linspace (1, pi);
+y = sin (x);
+plot (x, y);
 
 %% QUESTION 3
 
