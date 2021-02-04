@@ -38,8 +38,7 @@ fprintf("Volume of hollow sphere with inner radius: %.1f, and outer radius: %.1f
 % function that will prompt the user for the weight in kg, and wing area in
 % m^2. Return wing loading in kg / m^2
 
-loading = wingLoading ();
-fprintf("Wing loading is %.2f kg / m^2\n\n", loading);
+% See wingLoading ()d
 
 %% QUESTION 5
 % The fluid flow rate in the metric system is usually measured in m^3 / s.
@@ -107,19 +106,13 @@ end
 
 function [loading] = wingLoading ()
     % Returns wing loading, loading, of airplane with weight in kg, and
-    % wingArea in m^2
-    % Data is user inputted, and unchecked for error.
+    % wingArea in 
     
     % Prompt user for airplane weight in kg
     weight = input("Enter the airplane weight in kg: ");
-    wingArea = input("Enter the area of the wing in m^2: ");
+    wingArea = input("Enter the area of the wing in m^2");
     
-    try
-        loading = weight / wingArea;
-    catch
-        loading = 0;
-        warning("Must enter weight [kg], wingArea [m^2]. Returning 0;");
-    end
+    loading = weight / wingArea;
     % Matlab stores values to full machine precision, meaning x.yzq000000000000000000...
     % Any display of simply x.yzq is just a display preference, and not the
     % actual stored value.
