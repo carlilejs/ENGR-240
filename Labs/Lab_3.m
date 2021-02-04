@@ -22,12 +22,16 @@ area();
 array = ["Oxygen"   15.9994     2;
          "Hydrogen" 1.0079      2];
      
-fprintf("The weight of hydrogen peroxide is %.2f amu\n", amu(array));
+fprintf("The weight of hydrogen peroxide is %.2f amu\n\n", amu(array));
 
 %% QUESTION 3
 % Write a function that will calculate the volume of a hollow sphere
 
-% See volume(r1, r2)
+r0 = 3; % inner radius
+r1 = 5; % outer radius
+
+volume = volHollowSphere(r0, r1); % volume of sphere with inner radius r0, and outer radius r1
+fprintf("Volume of hollow sphere with inner radius: %.1f, and outer radius: %.1f, is %.2f\n\n", r0, r1, volume);
 
 %% QUESTION 4
 % Wing loading is the airplane's weight divided by wing area. Write a
@@ -92,7 +96,7 @@ function weight = amu (atom_info)
     end
     
     if ( ~isa(atom_info(1), 'string' ) || ~isa(atom_info(2:3), 'numeric') )
-        warning("Array atom_info should be in the form [String, Number, Number]");
+        warning("Array atom_info should be in the form [String, Number, Number]\n");
     end
 end
 
@@ -115,7 +119,7 @@ end
 
 function flowConversion (meters)
 % Converts flow rate from meters cubed per second to feet cubed per second
-    fprintf("\nThe flow rate is %.2f m^3/s\n", meters);
+    fprintf("The flow rate is %.2f m^3/s\n", meters);
     fprintf("A flow rate of %.2f feet cubed per second is equal to %.2f feet cubed per second\n\n", meters, meters / .0028);
 end
 
