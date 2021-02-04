@@ -12,7 +12,7 @@ clc
 % rectangle, and return its area with two decimal places. Put comments in
 % the function.
 
-area();
+area ();
 
 %% QUESTION 2
 % Write a function that will take in parameters for the number of atoms of
@@ -22,7 +22,7 @@ area();
 array = ["Oxygen"   15.9994     2;
          "Hydrogen" 1.0079      2];
      
-fprintf("The weight of hydrogen peroxide is %.2f amu\n\n", amu(array));
+fprintf("The weight of hydrogen peroxide is %.2f amu\n\n", amu (array));
 
 %% QUESTION 3
 % Write a function that will calculate the volume of a hollow sphere
@@ -30,7 +30,7 @@ fprintf("The weight of hydrogen peroxide is %.2f amu\n\n", amu(array));
 r0 = 3; % inner radius
 r1 = 5; % outer radius
 
-volume = volHollowSphere(r0, r1); % volume of sphere with inner radius r0, and outer radius r1
+volume = volHollowSphere (r0, r1); % volume of sphere with inner radius r0, and outer radius r1
 fprintf("Volume of hollow sphere with inner radius: %.1f, and outer radius: %.1f, is %.2f\n\n", r0, r1, volume);
 
 %% QUESTION 4
@@ -49,7 +49,7 @@ fprintf("Wing loading is %.2f kg / m^2\n\n", loading);
 
 metersPerSecond = 15.20;
 
-flowConversion(metersPerSecond);
+flowRate = flowConversion (metersPerSecond);
 
 
 %% QUESTION 6
@@ -125,10 +125,12 @@ function [loading] = wingLoading ()
     % actual stored value.
 end
 
-function flowConversion (meters)
+function [convertedFlowRate] = flowConversion (flowRate)
 % Converts flow rate from meters cubed per second to feet cubed per second
-    fprintf("The flow rate is %.2f m^3/s\n", meters);
-    fprintf("A flow rate of %.2f feet cubed per second is equal to %.2f feet cubed per second\n\n", meters, meters / .0028);
+    convertedFlowRate = flowRate / .0028;
+
+    fprintf("The flow rate is %.2f m^3/s\n", flowRate);
+    fprintf("A flow rate of %.2f m^3 / s is equal to %.2f ft^3 / s\n\n", flowRate, convertedFlowRate);
 end
 
 function foodCost (annualIncome)
