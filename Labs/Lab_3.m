@@ -53,8 +53,11 @@ flowRate = flowConversion (metersPerSecond);
 
 
 %% QUESTION 6
+% On average, people spend 8% to 10% of their income on food. Write a
+% function that will prompt the user for annual income and print the range
+% of money spent on food annually, as well as monthly.
 
-foodCost(100000);
+foodCost ();
 
 %% QUESTION 7
 % Write a function that takes a temperature in celcius. Ask the user if
@@ -133,9 +136,11 @@ function [convertedFlowRate] = flowConversion (flowRate)
     fprintf("A flow rate of %.2f m^3 / s is equal to %.2f ft^3 / s\n\n", flowRate, convertedFlowRate);
 end
 
-function foodCost (annualIncome)
-    fprintf("With an annual income of $%.2f, you should be spending between $%.2f and $%.2f on food each year.\n", annualIncome, annualIncome * .08, annualIncome * .1);
-    fprintf("That translates to a monthly food expense between $%.2f and $%.2f\n", annualIncome*.08 / 12, annualIncome*.1 / 12);
+function foodCost ()
+    income = input ("Enter your annual income in USD: ");
+
+    fprintf("With an annual income of $%.2f, you should be spending between $%.2f and $%.2f on food each year.\n", income, income*.08, income*.1);
+    fprintf("That translates to a monthly food expense between $%.2f and $%.2f\n\n", income*.08 / 12, income*.1 / 12);
 end
 
 function resultTemp = convertTemp ()
