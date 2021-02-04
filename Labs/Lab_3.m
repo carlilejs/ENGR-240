@@ -22,7 +22,7 @@ area ();
 array = ["Oxygen"   15.9994     2;
          "Hydrogen" 1.0079      2];
      
-fprintf("The weight of hydrogen peroxide is %.2f amu\n\n", amu (array));
+fprintf ("The weight of hydrogen peroxide is %.2f amu\n\n", amu (array));
 
 %% QUESTION 3
 % Write a function that will calculate the volume of a hollow sphere
@@ -31,7 +31,7 @@ r0 = 3; % inner radius
 r1 = 5; % outer radius
 
 volume = volHollowSphere (r0, r1); % volume of sphere with inner radius r0, and outer radius r1
-fprintf("Volume of hollow sphere with inner radius: %.1f, and outer radius: %.1f, is %.2f\n\n", r0, r1, volume);
+fprintf ("Volume of hollow sphere with inner radius: %.1f, and outer radius: %.1f, is %.2f\n\n", r0, r1, volume);
 
 %% QUESTION 4
 % Wing loading is the airplane's weight divided by wing area. Write a
@@ -39,7 +39,7 @@ fprintf("Volume of hollow sphere with inner radius: %.1f, and outer radius: %.1f
 % m^2. Return wing loading in kg / m^2
 
 loading = wingLoading ();
-fprintf("Wing loading is %.2f kg / m^2\n\n", loading);
+fprintf ("Wing loading is %.2f kg / m^2\n\n", loading);
 
 %% QUESTION 5
 % The fluid flow rate in the metric system is usually measured in m^3 / s.
@@ -64,7 +64,7 @@ foodCost ();
 % they want the temperature in Fahrenheit or Kelvin and convert. Use a
 % switch statement.
 
-resultant = convertTemp();
+resultant = convertTemp ();
 
 
 %% FUNCTION DEFINITIONS
@@ -72,19 +72,19 @@ resultant = convertTemp();
 function area ()
 % Prints the area, a, of a rectangle of length and width.
     
-    length = input("Enter the length of the rectangle: ");
-    if (~isa(length, 'numeric'))
-        warning("Length not a number. Setting length = 0.");
+    length = input ("Enter the length of the rectangle: ");
+    if (~isa (length, 'numeric'))
+        warning ("Length not a number. Setting length = 0.");
         length = 0;
     end
     
-    width = input("Enter the width of the rectangle: ");
-    if (~isa(width, 'numeric'))
-        warning("Width not a number. Setting width = 0.");
+    width = input ("Enter the width of the rectangle: ");
+    if (~isa (width, 'numeric'))
+        warning ("Width not a number. Setting width = 0.");
         width = 0;
     end
     
-    fprintf("Area of rectangle with width: %.1f and length: %.1f has area %.2f\n\n", length, width, length * width);
+    fprintf ("Area of rectangle with width: %.1f and length: %.1f has area %.2f\n\n", length, width, length * width);
 end
 
 
@@ -95,12 +95,12 @@ function [weight] = amu (atom_info)
 
     weight = 0;
     
-    for i = 1:size(atom_info)
-        weight = weight + ( double(atom_info(i,2)) * double(atom_info(i,3)) );
+    for i = 1:size (atom_info)
+        weight = weight + ( double (atom_info(i,2)) * double (atom_info(i,3)) );
     end
     
-    if ( ~isa(atom_info(1), 'string' ) || ~isa(atom_info(2:3), 'numeric') )
-        warning("Array atom_info should be in the form [String, Number, Number]\n");
+    if ( ~isa (atom_info(1), 'string' ) || ~isa (atom_info(2), 'numeric') || ~isa (atom_info(3), 'numeric') )
+        warning ("Array atom_info should be in the form [String, Number, Number]\n");
     end
 end
 
@@ -114,14 +114,14 @@ function [loading] = wingLoading ()
     % Data is user inputted, and unchecked for error.
     
     % Prompt user for airplane weight in kg
-    weight = input("Enter the airplane weight in kg: ");
-    wingArea = input("Enter the area of the wing in m^2: ");
+    weight = input ("Enter the airplane weight in kg: ");
+    wingArea = input ("Enter the area of the wing in m^2: ");
     
     try
         loading = weight / wingArea;
     catch
         loading = 0;
-        warning("Must enter weight [kg], wingArea [m^2]. Returning 0;");
+        warning ("Must enter weight [kg], wingArea [m^2]. Returning 0;");
     end
     % Matlab stores values to full machine precision, meaning x.yzq000000000000000000...
     % Any display of simply x.yzq is just a display preference, and not the
@@ -129,42 +129,51 @@ function [loading] = wingLoading ()
 end
 
 function [convertedFlowRate] = flowConversion (flowRate)
-% Converts flow rate from meters cubed per second to feet cubed per second
+% Takes parameter for flow rate in m^3 / s and returns converted rate in ft^3 / s
+
     convertedFlowRate = flowRate / .0028;
 
-    fprintf("The flow rate is %.2f m^3/s\n", flowRate);
-    fprintf("A flow rate of %.2f m^3 / s is equal to %.2f ft^3 / s\n\n", flowRate, convertedFlowRate);
+    fprintf ("The flow rate is %.2f m^3/s\n", flowRate);
+    fprintf ("A flow rate of %.2f m^3 / s is equal to %.2f ft^3 / s\n\n", flowRate, convertedFlowRate);
 end
 
-function foodCost ()
+function [monthLow, monthHigh] = foodCost ()
+% Prompts user for annual income, then returns array with high and low
+% values for monthly food cost. Also prints range for annual and monthly
+% food cost.
+
     income = input ("Enter your annual income in USD: ");
+    
+    monthLow = income*.08 / 12;
+    monthHigh = income*.1 / 12;
 
-    fprintf("With an annual income of $%.2f, you should be spending between $%.2f and $%.2f on food each year.\n", income, income*.08, income*.1);
-    fprintf("That translates to a monthly food expense between $%.2f and $%.2f\n\n", income*.08 / 12, income*.1 / 12);
+    fprintf ("With an annual income of $%.2f, you should be spending between $%.2f and $%.2f on food each year.\n", income, income*.08, income*.1);
+    fprintf ("That translates to a monthly food expense between $%.2f and $%.2f\n\n", monthLow, monthHigh);
 end
 
-function resultTemp = convertTemp ()
-    resultTemp = 0;
+function [resultTemp] = convertTemp ()
+% Prompts the user for a temperature in Celcius, as well as prompts user to
+% choose between Fahrenheit and Kelvin, then returns and prints conversion.
 
-    tempC = input("Enter a temperature in Celcius: ");
-    if isnumeric(tempC) ~= true
+    tempC = input ("Enter a temperature in Celcius: ");
+    if isnumeric (tempC) ~= true
        tempC = 0;
     end
     
-    conversion = input("Convert to Kelvin or Fahrenheit? K/F [F]: ", 's');
+    conversion = input ("Convert to Kelvin or Fahrenheit? K/F [F]: ", 's');
     
     switch conversion
         case 'F'
             resultTemp = (9/5) * tempC + 32;
-            fprintf("%.1f C is %.1f F\n", tempC, resultTemp);
+            fprintf ("%.1f C is %.1f F\n", tempC, resultTemp);
         case 'K'
             resultTemp = tempC + 273.15;
-            fprintf("%.1f C is %.1f K\n", tempC, resultTemp);
+            fprintf ("%.1f C is %.1f K\n", tempC, resultTemp);
         otherwise
             warning("Unknown input. Defaulting to fahrenheit.");
             
             resultTemp = (9/5) * tempC + 32;
-            fprintf("%.1f C is %.1f F\n", tempC, resultTemp);
+            fprintf ("%.1f C is %.1f F\n", tempC, resultTemp);
     end
 end
 
