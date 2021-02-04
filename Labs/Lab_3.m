@@ -91,7 +91,9 @@ function weight = amu (atom_info)
         weight = weight + ( double(atom_info(i,2)) * double(atom_info(i,3)) );
     end
     
-    if ( ~isa(atom_info(1), 'string' ) || ~isa
+    if ( ~isa(atom_info(1), 'string' ) || ~isa(atom_info(2:3), 'numeric') )
+        warning("Array atom_info should be in the form [String, Number, Number]");
+    end
 end
 
 function volume = volHollowSphere (r0, r1)
