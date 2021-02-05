@@ -37,7 +37,7 @@ plot (x, y);
 y = randi ([1, 100], [1, 15]);
 x = 1:1:length (y);
 
-plot(x, y, 'r*');
+plot(x, y, 'g');
 
 
 %% QUESTION 5
