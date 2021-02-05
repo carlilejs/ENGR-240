@@ -38,18 +38,21 @@ x = -2:0.1:2;
 y = exp (x);
 
 figure ('Name', 'Question 3', 'NumberTitle', 'off')
-plot (x, y);
-title ('f(x) = e^x');
-xlabel ('x');
-ylabel ('y');
+plot (x, y)
+title ('f(x) = e^x')
+xlabel ('x')
+ylabel ('y')
 
 %% QUESTION 4
+% Create a y vector that stores random numbers ranging from 1 to 100.
+% Create an x vector with values that iterate from 1 to the length of the y
+% vector.
 
 y = randi ([1, 100], [1, 15]);
 x = 1:1:length (y);
 
-figure('Name', 'Question 4', 'NumberTitle', 'off')
-plot(x, y, '--b^');
+figure ('Name', 'Question 4', 'NumberTitle', 'off')
+plot (x, y, '--b^')
 
 
 %% QUESTION 5
@@ -57,11 +60,11 @@ plot(x, y, '--b^');
 x = [1000   2000    3000    5000    10000];
 y = [288    281     269     256     223];
 
-figure('Name', 'Question 5', 'NumberTitle', 'off')
-plot(x, y, "bd:");
-title("Altitude vs. Temperature");
-xlabel("Altitude");
-ylabel("Temperature (K)");
+figure ('Name', 'Question 5', 'NumberTitle', 'off')
+plot (x, y, "bd:")
+title ("Altitude vs. Temperature")
+xlabel ("Altitude")
+ylabel ("Temperature (K)")
 
 %% QUESTION 6
 
@@ -71,11 +74,8 @@ i = 0.10;
 x = 0:40;
 y = P*(1+i).^x;
 
-figure('Name', 'Question 6', 'NumberTitle', 'off')
-plot(x, y);
-title("Compounding Interest");
-xlabel("Years");
-ylabel("Amount ($)");
-
-
-%% FUNCTION DEFINITIONS
+figure ('Name', 'Question 6', 'NumberTitle', 'off')
+plot (x, y)
+title ("Compounding Interest")
+xlabel ("Years")
+ylabel ("Amount ($)")
