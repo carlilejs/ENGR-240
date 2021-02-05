@@ -13,7 +13,11 @@ clc
 
 X = linspace (1, 2*pi);
 Y = 1 - sin (X).^2;
-plot (X, Y, 'g+');
+
+figure ('Name', 'Subplot practice', 'NumberTitle', 'off')
+subplot (211)
+plot (X, Y, 'g+')
+title ('Question 1')
 
 %% QUESTION 2
 % Create a vector x with values ranging from 1 to pi. Calculate the vector
@@ -21,7 +25,10 @@ plot (X, Y, 'g+');
 
 x = linspace (1, pi);
 y = sin (x);
-plot (x, y);
+
+subplot (212)
+plot (x, y)
+title ('Question 2')
 
 %% QUESTION 3
 % Plot exp (x) for values of x ranging from -2 to 2 in steps of 0.1. Place
@@ -29,23 +36,46 @@ plot (x, y);
 
 x = -2:0.1:2;
 y = exp (x);
-plot (x, y);
 
+figure ('Name', 'Question 3', 'NumberTitle', 'off')
+plot (x, y);
+title ('f(x) = e^x');
+xlabel ('x');
+ylabel ('y');
 
 %% QUESTION 4
 
 y = randi ([1, 100], [1, 15]);
 x = 1:1:length (y);
 
-plot(x, y, 'r*');
+figure('Name', 'Question 4', 'NumberTitle', 'off')
+plot(x, y, '--b^');
 
 
 %% QUESTION 5
 
+x = [1000   2000    3000    5000    10000];
+y = [288    281     269     256     223];
 
+figure('Name', 'Question 5', 'NumberTitle', 'off')
+plot(x, y, "bd:");
+title("Altitude vs. Temperature");
+xlabel("Altitude");
+ylabel("Temperature (K)");
 
 %% QUESTION 6
 
+P = 15000;
+i = 0.10;
+
+x = 0:40;
+y = P*(1+i).^x;
+
+figure('Name', 'Question 6', 'NumberTitle', 'off')
+plot(x, y);
+title("Compounding Interest");
+xlabel("Years");
+ylabel("Amount ($)");
 
 
 %% FUNCTION DEFINITIONS

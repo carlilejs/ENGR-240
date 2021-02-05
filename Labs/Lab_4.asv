@@ -13,6 +13,8 @@ clc
 
 X = linspace (1, 2*pi);
 Y = 1 - sin (X).^2;
+
+figure
 plot (X, Y, 'g+');
 
 %% QUESTION 2
@@ -21,6 +23,8 @@ plot (X, Y, 'g+');
 
 x = linspace (1, pi);
 y = sin (x);
+
+figure("Name", "Question 2", "Number")
 plot (x, y);
 
 %% QUESTION 3
@@ -30,22 +34,38 @@ plot (x, y);
 x = -2:0.1:2;
 y = exp (x);
 plot (x, y);
-
+title("f(x) = e^x");
+xlabel("x");
+ylabel("y");
 
 %% QUESTION 4
 
 y = randi ([1, 100], [1, 15]);
 x = 1:1:length (y);
 
-plot(x, y, 'g');
+plot(x, y, '--b^');
 
 
 %% QUESTION 5
 
-
+x = [1000   2000    3000    5000    10000];
+y = [288    281     269     256     223];
+plot(x, y, "bd:");
+title("Altitude vs. Temperature");
+xlabel("Altitude");
+ylabel("Temperature (K)");
 
 %% QUESTION 6
 
+P = 15000;
+i = 0.10;
+
+x = 0:40;
+y = P*(1+i).^x;
+plot(x, y);
+title("Compounding Interest");
+xlabel("Years");
+ylabel("Amount ($)");
 
 
 %% FUNCTION DEFINITIONS
