@@ -23,5 +23,43 @@ F = factor (expr) % Does not factor
 
 %% Question 5
 
-expr2 = y^2 + 4*y^3 +3*y^2 + 3y + y
+expr2 = y^2 + 4*y^3 +3*y^2 + 3*y + y
+
+
+%% Question 6
+
+combine (expr2)
+
+%% Question 7
+
+expr3 = (z + 3) * (z - 1)
+
+%% Question 8
+
+expand (expr3)
+
+%% Question 9
+
+solve (expr2)
+
+%% Question 10
+
+solve (expr2 == 0, y)
+
+%% Question 11
+
+expr4 = y*x^2 + z*x + 6
+
+%% Question 12
+
+fprintf ('y = %s\n', solve (expr4, y))
+fprintf ('z = %s\n', solve (expr4, z))
+
+%% Question 13
+
+% I found this on the documention: 
+
+
+
+
 
