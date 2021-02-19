@@ -52,12 +52,19 @@ expr4 = y*x^2 + z*x + 6
 
 %% Question 12
 
-fprintf ('y = %s\n', solve (expr4, y))
-fprintf ('z = %s\n', solve (expr4, z))
+y4 = solve (expr4, y);ef 
+z4 = solve (expr4, z);
+
+fprintf ('y = %s\n', y4)
+fprintf ('z = %s\n', z4)
 
 %% Question 13
 
-% I found this on the documention: 
+% I found this on the documention: https://www.mathworks.com/help/matlab/ref/ezplot.html
+% "ezplot is not recommended, use fplot instead"
+
+fplot (@(z) y4)
+fplot(@(y) z4)
 
 
 
